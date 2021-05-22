@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# Movie App
+
+Make a list of movies to watch later, favorites, etc. 
+
+Uses the [OMDB API](http://omdbapi.com)
+
+This was initially inspired by a [freeCodeCamp tutorial](https://www.freecodecamp.org/news/react-movie-app-tutorial/) by Chris Blakely.
+
+React 17 with Bootstrap 4
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
