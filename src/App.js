@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import AddFavorite from "./components/AddFavorite";
 import MovieList from "./components/MovieList";
 import MovieListHeading from "./components/MovieListHeading";
 import SearchBox from "./components/SearchBox";
 
 const App = () => {
+  const [favorites, setFavorites] = useState([]);
   const [movies, setMovies] = useState([ ]);
   const [searchValue, setSearchValue] = useState('');
 
@@ -20,18 +22,27 @@ const App = () => {
     }
   };
 
+  const addFavoriteMovie = (movie) => {
+    const newFavoriteList = [...favorites, movie];
+    setFavorites(newFavoriteList);
+  };
+
   useEffect(() => {
     getMovieRequest(searchValue);
   }, [searchValue]);
 
   return (
     <div className="container-fluid movie-app">
-      <div className="row">
+      <div className="row d-flex align-items-center mt-4 mb-4">
         <MovieListHeading heading='Movies '/>
         <SearchBox searchValue={searchValue} setSearchValue={setSearchValue} />
       </div>
       <div className="row">
-        <MovieList movies={movies} />
+        <MovieList 
+          movies={movies} 
+          favoriteComponent={AddFavorite} 
+          handleFavoritesClick={addFavoriteMovie}
+        />
       </div>
     </div>
   );
